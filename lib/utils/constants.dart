@@ -6,6 +6,7 @@ import 'dart:io' show Platform;
 
 const secondaryColor=Color(0xff583ba9);
 const primaryColor=Color(0xff7f56da);
+const lightColor=Color(0xfff8f5fe);
 
 DateFormat birthDayFormat = DateFormat('MM/dd/yyyy');
 DateFormat timeFormat = DateFormat('hh:mm a');
