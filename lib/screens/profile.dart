@@ -38,7 +38,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     padding: EdgeInsets.only(top:10,right: 10),
                     child: InkWell(
                       onTap: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => const SearchScreen()));
+                        //Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) =>  SearchScreen()));
 
                       },
                       child: Container(

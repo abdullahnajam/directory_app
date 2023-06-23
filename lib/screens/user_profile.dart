@@ -1,12 +1,16 @@
+import 'package:directory_app/model/user_model.dart';
 import 'package:directory_app/utils/responsive.dart';
 import 'package:directory_app/widgets/custom_appbar.dart';
+import 'package:directory_app/widgets/profile_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
 
 import '../utils/constants.dart';
 
 class UserProfile extends StatefulWidget {
-  const UserProfile({Key? key}) : super(key: key);
+  UserModel user;
+
+  UserProfile(this.user);
 
   @override
   State<UserProfile> createState() => _UserProfileState();
@@ -43,7 +47,7 @@ class _UserProfileState extends State<UserProfile> with SingleTickerProviderStat
                 Center(
                   child: Padding(
                     padding: EdgeInsets.only(top:MediaQuery.of(context).size.height*0.1),
-                    child: Image.asset('assets/images/profile.png',height: 100,),
+                    child: ProfilePicture(url: widget.user.profilePic,height: 100,width: 100,),
                   ),
                 ),
 
@@ -52,11 +56,11 @@ class _UserProfileState extends State<UserProfile> with SingleTickerProviderStat
             ),
             Padding(
                 padding: EdgeInsets.only(top: 10),
-                child: Center(child: Text('Anika Levin',style: TextStyle(fontWeight: FontWeight.w900,fontSize: 25),))
+                child: Center(child: Text('${widget.user.firstName} ${widget.user.lastName}',style: TextStyle(fontWeight: FontWeight.w900,fontSize: 25),))
             ),
             Padding(
                 padding: EdgeInsets.only(top: 5),
-                child: Center(child: Text('Australia, Melbourne',style: TextStyle(fontWeight: FontWeight.w300,fontSize: 15),))
+                child: Center(child: Text('${widget.user.city}, ${widget.user.country}',style: TextStyle(fontWeight: FontWeight.w300,fontSize: 15),))
             ),
             SizedBox(height: 5,),
             Container(

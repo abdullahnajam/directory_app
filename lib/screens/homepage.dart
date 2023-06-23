@@ -1,4 +1,5 @@
-import 'package:directory_app/screens/create_account.dart';
+import 'package:directory_app/screens/auth/create_account.dart';
+import 'package:directory_app/screens/search_screen.dart';
 import 'package:directory_app/utils/constants.dart';
 import 'package:directory_app/utils/responsive.dart';
 import 'package:directory_app/widgets/custom_appbar.dart';
@@ -14,6 +15,7 @@ class Homepage extends StatefulWidget {
 }
 
 class _HomepageState extends State<Homepage> {
+  var _searchController=TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,84 +44,60 @@ class _HomepageState extends State<Homepage> {
                   if(Responsive.isMobile(context))
                     Column(
                     children: [
-                      Container(
-                        height: 50,
-                        child: TypeAheadField(
-                          textFieldConfiguration: TextFieldConfiguration(
+                      TextFormField(
+                        controller: _searchController,
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Please enter some text';
+                          }
+                          return null;
+                        },
 
-
-                            decoration: InputDecoration(
-                              contentPadding: const EdgeInsets.all(15),
-                              focusedBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(7.0),
-                                borderSide: const BorderSide(
-                                  color: Colors.transparent,
-                                ),
-                              ),
-                              enabledBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(7.0),
-                                borderSide: const BorderSide(
-                                    color: Colors.transparent,
-                                    width: 0.5
-                                ),
-                              ),
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(7.0),
-                                borderSide: const BorderSide(
-                                  color: Colors.transparent,
-                                  width: 0.5,
-                                ),
-                              ),
-                              filled: true,
-                              fillColor: Colors.white,
-                              hintText: 'Search',
-                              // If  you are using latest version of flutter then lable text and hint text shown like this
-                              // if you r using flutter less then 1.20.* then maybe this is not working properly
-                              floatingLabelBehavior: FloatingLabelBehavior.always,
+                        decoration: InputDecoration(
+                          contentPadding: const EdgeInsets.all(15),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(7.0),
+                            borderSide: const BorderSide(
+                              color: Colors.transparent,
                             ),
                           ),
-                          noItemsFoundBuilder: (context) {
-                            return ListTile(
-                              leading: Icon(Icons.error),
-                              title: Text('No Data Found'),
-                            );
-                          },
-                          suggestionsCallback: (pattern) async {
-
-                            /* List<SearchModel> search=[];
-
-                  search=await ChatApi.getSearchData(provider.userData!.userId,pattern);*/
-
-
-
-                            return [];
-                          },
-                          itemBuilder: (context, var suggestion) {
-                            return ListTile(
-                              onTap: (){
-
-                              },
-
-                              title: Text(suggestion.name),
-                              trailing: Text(suggestion.group?'Group':''),
-                            );
-                          },
-                          onSuggestionSelected: (var suggestion) {
-                            //_countryController.text=suggestion.name;
-                            Navigator.pop(context);
-
-                          },
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(7.0),
+                            borderSide: const BorderSide(
+                                color: Colors.transparent,
+                                width: 0.5
+                            ),
+                          ),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(7.0),
+                            borderSide: const BorderSide(
+                              color: Colors.transparent,
+                              width: 0.5,
+                            ),
+                          ),
+                          filled: true,
+                          fillColor: Colors.white,
+                          hintText: 'Search',
+                          // If  you are using latest version of flutter then lable text and hint text shown like this
+                          // if you r using flutter less then 1.20.* then maybe this is not working properly
+                          floatingLabelBehavior: FloatingLabelBehavior.always,
                         ),
                       ),
                       SizedBox(height: 10,),
-                      Container(
-                        height: 50,
-                        decoration: BoxDecoration(
-                          color: primaryColor,
-                          borderRadius: BorderRadius.circular(7)
+                      InkWell(
+                        onTap: (){
+                          Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) =>  SearchScreen(_searchController.text.trim())));
+
+                        },
+                        child: Container(
+                          height: 50,
+                          decoration: BoxDecoration(
+                            color: primaryColor,
+                            borderRadius: BorderRadius.circular(7)
+                          ),
+                          alignment: Alignment.center,
+                          child: Text('Search',style: TextStyle(color: Colors.white),),
                         ),
-                        alignment: Alignment.center,
-                        child: Text('Search',style: TextStyle(color: Colors.white),),
                       )
                     ],
                   )
@@ -130,88 +108,63 @@ class _HomepageState extends State<Homepage> {
                         children: [
                           Expanded(
                             flex: 8,
-                            child: Container(
-                              height: 50,
+                            child: TextFormField(
+                              controller: _searchController,
+                              validator: (value) {
+                                if (value == null || value.isEmpty) {
+                                  return 'Please enter some text';
+                                }
+                                return null;
+                              },
 
-                              child: TypeAheadField(
-                                textFieldConfiguration: TextFieldConfiguration(
-
-
-                                  decoration: InputDecoration(
-                                    contentPadding: const EdgeInsets.all(15),
-                                    focusedBorder: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(7.0),
-                                      borderSide: const BorderSide(
-                                        color: Colors.transparent,
-                                      ),
-                                    ),
-                                    enabledBorder: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(7.0),
-                                      borderSide: const BorderSide(
-                                          color: Colors.transparent,
-                                          width: 0.5
-                                      ),
-                                    ),
-                                    border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(7.0),
-                                      borderSide: const BorderSide(
-                                        color: Colors.transparent,
-                                        width: 0.5,
-                                      ),
-                                    ),
-                                    filled: true,
-                                    fillColor: Colors.white,
-                                    hintText: 'Search',
-                                    // If  you are using latest version of flutter then lable text and hint text shown like this
-                                    // if you r using flutter less then 1.20.* then maybe this is not working properly
-                                    floatingLabelBehavior: FloatingLabelBehavior.always,
+                              decoration: InputDecoration(
+                                contentPadding: const EdgeInsets.all(15),
+                                focusedBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(7.0),
+                                  borderSide: const BorderSide(
+                                    color: Colors.transparent,
                                   ),
                                 ),
-                                noItemsFoundBuilder: (context) {
-                                  return ListTile(
-                                    leading: Icon(Icons.error),
-                                    title: Text('No Data Found'),
-                                  );
-                                },
-                                suggestionsCallback: (pattern) async {
-
-                                  /* List<SearchModel> search=[];
-
-                  search=await ChatApi.getSearchData(provider.userData!.userId,pattern);*/
-
-
-
-                                  return [];
-                                },
-                                itemBuilder: (context, var suggestion) {
-                                  return ListTile(
-                                    onTap: (){
-
-                                    },
-
-                                    title: Text(suggestion.name),
-                                    trailing: Text(suggestion.group?'Group':''),
-                                  );
-                                },
-                                onSuggestionSelected: (var suggestion) {
-                                  //_countryController.text=suggestion.name;
-                                  Navigator.pop(context);
-
-                                },
+                                enabledBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(7.0),
+                                  borderSide: const BorderSide(
+                                      color: Colors.transparent,
+                                      width: 0.5
+                                  ),
+                                ),
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(7.0),
+                                  borderSide: const BorderSide(
+                                    color: Colors.transparent,
+                                    width: 0.5,
+                                  ),
+                                ),
+                                filled: true,
+                                fillColor: Colors.white,
+                                hintText: 'Search',
+                                // If  you are using latest version of flutter then lable text and hint text shown like this
+                                // if you r using flutter less then 1.20.* then maybe this is not working properly
+                                floatingLabelBehavior: FloatingLabelBehavior.always,
                               ),
                             ),
                           ),
                           SizedBox(width: 10,),
                           Expanded(
                             flex: 2,
-                            child: Container(
-                              height: 50,
-                              decoration: BoxDecoration(
-                                  color: primaryColor,
-                                  borderRadius: BorderRadius.circular(7)
+                            child: InkWell(
+                              onTap: (){
+                                Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) =>  SearchScreen(_searchController.text.trim())));
+
+                              },
+                              child: Container(
+                                height: 50,
+                                decoration: BoxDecoration(
+                                    color: primaryColor,
+                                    borderRadius: BorderRadius.circular(7)
+                                ),
+                                alignment: Alignment.center,
+                                child: Text('Search',style: TextStyle(color: Colors.white),),
                               ),
-                              alignment: Alignment.center,
-                              child: Text('Search',style: TextStyle(color: Colors.white),),
                             ),
                           )
                         ],

@@ -1,7 +1,9 @@
+import 'package:directory_app/screens/auth/create_account.dart';
 import 'package:directory_app/screens/homepage.dart';
 import 'package:directory_app/screens/my_profile.dart';
 import 'package:directory_app/utils/constants.dart';
 import 'package:directory_app/utils/responsive.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
@@ -109,7 +111,13 @@ class _CustomAppBarState extends State<CustomAppBar> {
                 SizedBox(width: 10,),
                 InkWell(
                   onTap: (){
-                    Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => const MyProfile()));
+                    if(FirebaseAuth.instance.currentUser!=null){
+                      Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => const MyProfile()));
+                    }
+                    else{
+                      Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => const CreateAccount()));
+                    }
+
 
                   },
                   child: Image.asset('assets/images/profile.png',height: 25,fit: BoxFit.cover,),
