@@ -2,7 +2,9 @@ import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cool_alert/cool_alert.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:sn_progress_dialog/progress_dialog.dart';
@@ -35,6 +37,28 @@ class ImageHandler{
       pr.close();
     }).onError((error, stackTrace){
       pr.close();
+      CoolAlert.show(
+        context: context,
+        type: CoolAlertType.error,
+        text: error.toString(),
+      );
+    });
+    return url;
+  }
+
+  static Future<String> uploadImageFromWeb(BuildContext context,Uint8List image) async {
+    String url="";
+    ProgressDialog pd = ProgressDialog(context: context);
+    pd.show(max: 100, msg: 'Uploading',barrierDismissible: true);
+    Reference firebaseStorageRef = FirebaseStorage.instance.ref().child('uploads/${DateTime.now().millisecondsSinceEpoch}');
+    UploadTask uploadTask = firebaseStorageRef.putData(image);
+    TaskSnapshot taskSnapshot = await uploadTask;
+    await taskSnapshot.ref.getDownloadURL().then((value)async {
+      url=value;
+      print("func $url");
+      pd.close();
+    }).onError((error, stackTrace){
+      pd.close();
       CoolAlert.show(
         context: context,
         type: CoolAlertType.error,

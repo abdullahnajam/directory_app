@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "site": "directorywebsite-v2",
+    "site": "directorywebsite-v8",
     "public": "build/web",
     "ignore": [
       "firebase.json",

@@ -28,10 +28,9 @@ String? encodeQueryParameters(Map<String, String> params) {
 const placeholder = 'https://www.pngfind.com/pngs/m/610-6104451_image-placeholder-png-user-profile-placeholder-image-png.png';
 const placeholderEvent = 'https://www.northland.edu/wp-content/uploads/2015/09/event_placeholder1-800x500.png';
 
-
-
-
-
+const list=['Yes','No','People I follow'];
+List<String> filter=['Name','Email','Phone','Social'];
+const double maxWidth=1440;
 final dfampm = new DateFormat('E, MMM dd HH:mm');
 final df = new DateFormat('dd-mm-yyyy');
 final tf = new DateFormat('HH:mm');

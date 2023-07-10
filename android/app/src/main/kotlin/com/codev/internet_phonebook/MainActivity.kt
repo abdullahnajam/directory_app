@@ -1,4 +1,4 @@
-package com.codev.directory_app
+package com.codev.internet_phonebook
 
 import io.flutter.embedding.android.FlutterActivity
 

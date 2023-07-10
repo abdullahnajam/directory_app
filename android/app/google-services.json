@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "31156258293-75gt482ipu6kveq80n2o8d47323johqa.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.codev.directory_app",
+            "certificate_hash": "a86918c2b4e958f7df0de52a0ab24f95b75f3495"
+          }
+        },
+        {
           "client_id": "31156258293-fpf33p2357vm0rr8h2hdnlqef0k5iu93.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
@@ -22,7 +30,7 @@
           }
         },
         {
-          "client_id": "31156258293-bcqvvju07qtl62a9totkmdp04kv3vu40.apps.googleusercontent.com",
+          "client_id": "31156258293-28gnan9ka2o82mp2spgbadtndidh3e9a.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
@@ -35,7 +43,52 @@
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "31156258293-bcqvvju07qtl62a9totkmdp04kv3vu40.apps.googleusercontent.com",
+              "client_id": "31156258293-28gnan9ka2o82mp2spgbadtndidh3e9a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:31156258293:android:436430b714769fd1610cbc",
+        "android_client_info": {
+          "package_name": "com.codev.internet_phonebook"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "31156258293-sceqqb0ahvsik6a63plnhggic2i6cpi0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.codev.internet_phonebook",
+            "certificate_hash": "a86918c2b4e958f7df0de52a0ab24f95b75f3495"
+          }
+        },
+        {
+          "client_id": "31156258293-vvhv9eeb6dd3aom043pdjmpp1t866aeh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.codev.internet_phonebook",
+            "certificate_hash": "d16203b70ad6e4b805694c9a19c9a8403670e647"
+          }
+        },
+        {
+          "client_id": "31156258293-28gnan9ka2o82mp2spgbadtndidh3e9a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA5DkIK7W7QwJAWxTZbKQJhyM5r_6PYqmI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "31156258293-28gnan9ka2o82mp2spgbadtndidh3e9a.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

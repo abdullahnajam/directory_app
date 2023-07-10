@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:country_state_city/utils/country_utils.dart';
 import 'package:directory_app/screens/homepage.dart';
 import 'package:directory_app/screens/my_profile.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -21,8 +22,7 @@ class _SplashScreenState extends State<SplashScreen>  with TickerProviderStateMi
   @override
   void initState() {
     super.initState();
-
-
+    print('firebase user ${FirebaseAuth.instance.currentUser}');
 
 
     animationController = AnimationController(
@@ -39,7 +39,7 @@ class _SplashScreenState extends State<SplashScreen>  with TickerProviderStateMi
     animationController!.dispose();
     super.dispose();
   }
-  final splashDelay = 5;
+  final splashDelay = 2;
 
 
   _loadWidget() async {
@@ -50,6 +50,7 @@ class _SplashScreenState extends State<SplashScreen>  with TickerProviderStateMi
 
   void navigationPage() async{
     if(FirebaseAuth.instance.currentUser!=null){
+      print('userId ${FirebaseAuth.instance.currentUser!.uid}');
       await FirebaseFirestore.instance.collection('users').doc(FirebaseAuth.instance.currentUser!.uid).get().then((DocumentSnapshot documentSnapshot) async{
         if (documentSnapshot.exists) {
           print("user exists");
@@ -58,31 +59,33 @@ class _SplashScreenState extends State<SplashScreen>  with TickerProviderStateMi
           print("user ${user.userId} ${user.status}");
           if(user.status=="Pending"){
             FirebaseAuth.instance.signOut();
-            Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) => Homepage()));
+            Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => Homepage()));
 
           }
           else if(user.status=="Blocked"){
             FirebaseAuth.instance.signOut();
-            Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) => Homepage()));
+            Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => Homepage()));
           }
+// Get all countries
 
           else if(user.status=="Approved"){
+
             final provider = Provider.of<UserDataProvider>(context, listen: false);
             provider.setUserData(user);
-            Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) => MyProfile()));
+            Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => MyProfile()));
 
 
 
           }
         }
         else{
-          Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) => Homepage()));
+          Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => Homepage()));
         }
 
       });
     }
     else{
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) => Homepage()));
+      Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => Homepage()));
     }
   }
 

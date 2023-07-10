@@ -31,10 +31,10 @@ class Responsive extends StatelessWidget {
       return MediaQuery.of(context).size.width;
     }
     else if(isDesktop(context)){
-      return MediaQuery.of(context).size.width*0.5;
+      return MediaQuery.of(context).size.width*0.3;
     }
     else{
-      return MediaQuery.of(context).size.width*0.75;
+      return MediaQuery.of(context).size.width*0.5;
     }
   }
 
@@ -43,10 +43,10 @@ class Responsive extends StatelessWidget {
       return MediaQuery.of(context).size.width*0.85;
     }
     else if(isDesktop(context)){
-      return MediaQuery.of(context).size.width*0.35;
+      return MediaQuery.of(context).size.width*0.3;
     }
     else{
-      return MediaQuery.of(context).size.width*0.5;
+      return MediaQuery.of(context).size.width*0.4;
     }
   }
   static double getDailogWidth(BuildContext context){
@@ -55,6 +55,17 @@ class Responsive extends StatelessWidget {
     }
     else if(isDesktop(context)){
       return MediaQuery.of(context).size.width*0.4;
+    }
+    else{
+      return MediaQuery.of(context).size.width*0.6;
+    }
+  }
+  static double getOtpDailogWidth(BuildContext context){
+    if(isMobile(context)){
+      return MediaQuery.of(context).size.width*0.8;
+    }
+    else if(isDesktop(context)){
+      return MediaQuery.of(context).size.width*0.3;
     }
     else{
       return MediaQuery.of(context).size.width*0.6;
