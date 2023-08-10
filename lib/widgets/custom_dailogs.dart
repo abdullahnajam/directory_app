@@ -1146,7 +1146,7 @@ Future<void> showEditLinkDialog(BuildContext context,String link,String id) asyn
 Future<void> showAddPhoneDialog(BuildContext context) async {
 
   var phoneController=TextEditingController();
-  String phone='+92';
+  String phone='+1';
   final _formKey = GlobalKey<FormState>();
   String visibility='Yes';
   return showDialog<void>(
@@ -1433,7 +1433,7 @@ Future<void> showAddPhoneDialog(BuildContext context) async {
 
 Future<void> showEditMainPhoneDialog(BuildContext context,String phone) async {
   var phoneController=TextEditingController();
-  String phone='+92';
+  String phone='+1';
   final _formKey = GlobalKey<FormState>();
   String visibility='Yes';
   return showDialog<void>(
@@ -2027,7 +2027,7 @@ Future<void> showAvailableContactsDialog(BuildContext context,List<UserModel> us
 }*/
 Future<void> showEditPhoneDialog(BuildContext context,Map<String,dynamic> data) async {
   var phoneController=TextEditingController();
-  String phone='+92';
+  String phone='+1';
   final _formKey = GlobalKey<FormState>();
   String visibility=data['visibility'];
   return showDialog<void>(

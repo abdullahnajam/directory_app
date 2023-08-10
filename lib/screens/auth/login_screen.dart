@@ -23,7 +23,7 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   final _formKey = GlobalKey<FormState>();
   var phoneController=TextEditingController();
-  String phone='+92';
+  String phone='+1';
   @override
   Widget build(BuildContext context) {
     return Scaffold(

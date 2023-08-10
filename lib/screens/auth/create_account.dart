@@ -28,7 +28,7 @@ class _CreateAccountState extends State<CreateAccount> {
   var firstNameController=TextEditingController();
   var lastNameController=TextEditingController();
   var phoneController=TextEditingController();
-  String phone='+92';
+  String phone='+1';
   final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
@@ -291,6 +291,7 @@ class _CreateAccountState extends State<CreateAccount> {
                                     final ProgressDialog pr = ProgressDialog(context: context);
                                     pr.show(max: 100, msg: 'Please Wait',barrierDismissible: true);
                                     final provider = Provider.of<UserDataProvider>(context, listen: false);
+                                    print('phone number $phone${phoneController.text.trim()}');
                                     UserModel model=UserModel.fromMap(
                                         {
                                           'phone':'$phone${phoneController.text.trim()}',
